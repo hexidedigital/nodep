@@ -1,5 +1,5 @@
 module.exports = {
   'description': 'echo',
-  'command': 'echo "Hello from local task!"',
+  'command': ['echo "Hello from local task!"'],
   'stages': ['all']
 };

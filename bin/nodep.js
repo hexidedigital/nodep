@@ -71,11 +71,6 @@ if (argv.recipe === 'setup') {
 
   console.info('Setup success!')
 
-} else if (argv.recipe === 'init') {
-  // mkdir deploy
-  // copy default recipe
-  // copy default tasks
-  console.info('// TODO Init success!')
 } else {
   // try to find local or external recipe
 
