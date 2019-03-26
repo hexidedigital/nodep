@@ -5,10 +5,10 @@ node_modules
 
 
 # production
-#build
+build*
 
 #deploy scripts
-#deploy
+deploy*
 
 # misc
 .DS_Store

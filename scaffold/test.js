@@ -1,10 +1,10 @@
 module.exports = {
   name: 'test',
   tasks: [
-    'lsla',
+    'pwd',
     'echo',
     {
-      'name': 'list all files in /var/www',
+      'description': 'list all files in /var/www',
       'command': 'ls -la',
       'stages': ['all']
     }
