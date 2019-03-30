@@ -5,8 +5,8 @@ module.exports = {
     'echo',
     {
       'description': 'list all files in /var/www',
-      'command': ['ls -la'],
-      'stages': ['all']
+      'stages': ['all'],
+      'command': 'ls -la'
     }
   ]
 }
