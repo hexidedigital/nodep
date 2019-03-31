@@ -8,7 +8,7 @@ node_modules
 build*
 
 #deploy scripts
-deploy*
+/deploy*
 
 # misc
 .DS_Store
