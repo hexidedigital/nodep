@@ -9,7 +9,6 @@ const pwd = path.resolve('.')
 const project_root = path.resolve(__dirname + '/../')
 const version = require(project_root + '/package.json').version
 const Dep = require(project_root + '/lib/deployer')
-const Recipe = require(project_root + '/lib/recipe')
 
 var argv = require('minimist')(
   process.argv.slice(2),
@@ -80,44 +79,17 @@ if (argv.recipe === 'setup') {
     process.exit(1)
   }
 
-  // detect server configuration
-  if (!fs.existsSync(pwd + '/deploy/_servers.js')) {
-    console.error('Cannot read server configuration from %s!', pwd + '/deploy/_servers.js')
-    process.exit(1)
-  }
-
   // detect recipe
-  if (
-    !fs.existsSync(pwd + '/deploy/' + argv.recipe + '.js') &&
-    !fs.existsSync(project_root + '/lib/recipes/' + argv.recipe + '.js')
-  ) {
+  if (!fs.existsSync(pwd + '/deploy/' + argv.recipe + '.js')) {
     console.error('Cannot read recipe %s!', argv.recipe)
     process.exit(1)
   }
 
-  // load servers
-  let servers = require(pwd + '/deploy/_servers.js')
 
-  // load recipe
-  let recipe_content
-  if (fs.existsSync(pwd + '/deploy/' + argv.recipe + '.js')) {
-    recipe_content = require(pwd + '/deploy/' + argv.recipe + '.js')
-  } else {
-    recipe_content = require(project_root + '/lib/recipes/' + argv.recipe + '.js')
-  }
+  let dep = new Dep(argv.stage, pwd, project_root);
+  dep = require(pwd + '/deploy/' + argv.recipe + '.js')(dep)
+  dep.run('default')
 
-  // prepare recipe
-  const rec = new Recipe(recipe_content, pwd, project_root)
-  // console.log('LIST!!', rec.getTasks());
-
-  const dep = new Dep(argv.stage);
-  dep.initServers(servers)
-  dep.prepare(rec)
-
-// const dep = new Dep(options);
-
-  dep.on('ready', dep.start);
-  dep.on('done', () => {console.log('Recipe %s completed', argv.recipe);});
 
 }
 
