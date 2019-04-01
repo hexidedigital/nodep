@@ -17,17 +17,14 @@ var argv = require('minimist')(
       h: 'help',
       v: 'version',
       s: 'stage',
+      c: 'config',
     },
     default: {
-      stage: 'production'
+      stage: 'production',
+      config: 'config'
     },
   }
 )
-
-// empty recipe - just show help
-if (argv._.length === 0 && !argv.version) {
-  argv.help = argv.h = true
-}
 
 // show help
 if (argv.help) {
@@ -40,8 +37,7 @@ if (argv.help) {
   console.log('   -s, --stage                     server stage')
   console.log('')
   console.log('Default recipes:')
-  console.log('   setup                           generate initial deployer directory')
-  console.log('   init                            prepare directory structure on all servers')
+  console.log('   init                           generate initial deployer directory')
   console.log('   echo                            run simple echo command to ping servers')
 
   process.exit()
@@ -53,10 +49,10 @@ if (argv.version) {
 }
 
 // there is some recipe -
-argv.recipe = argv._[0]
+argv.task = argv._[0] || 'default'
 // console.dir(argv);
 
-if (argv.recipe === 'setup') {
+if (argv.task === 'init') {
   // check if directory exists
   if (fs.existsSync(pwd + '/deploy')) {
     console.error('Directory %s already exists!', pwd + '/deploy')
@@ -65,10 +61,11 @@ if (argv.recipe === 'setup') {
 
   // mkdir deploy
   fs.mkdirSync(pwd + '/deploy')
+
   // copy scaffolds
   copydir.sync(project_root + '/scaffold', pwd + '/deploy')
 
-  console.info('Setup success!')
+  console.info('Init success!')
 
 } else {
   // try to find local or external recipe
@@ -79,17 +76,16 @@ if (argv.recipe === 'setup') {
     process.exit(1)
   }
 
-  // detect recipe
-  if (!fs.existsSync(pwd + '/deploy/' + argv.recipe + '.js')) {
-    console.error('Cannot read recipe %s!', argv.recipe)
+  // detect config
+  if (!fs.existsSync(pwd + '/deploy/' + argv.config + '.js')) {
+    console.error('Cannot read config %s!', argv.config)
     process.exit(1)
   }
 
 
   let dep = new Dep(argv.stage, pwd, project_root);
-  dep = require(pwd + '/deploy/' + argv.recipe + '.js')(dep)
-  dep.run('default')
-
+  dep = require(pwd + '/deploy/' + argv.config + '.js')(dep)
+  dep.run(argv.task)
 
 }
 

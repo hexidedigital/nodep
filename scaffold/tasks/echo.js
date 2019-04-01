@@ -1,5 +1,5 @@
-module.exports = {
-  'description': 'echo',
-  'stages': ['all'],
-  'command': 'echo "Hello from local task!"'
-};
+module.exports = async (client) => {
+
+  let result = await client.run('echo "Hello from local task!"')
+  // console.log('ECHO', result)
+}
