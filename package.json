@@ -1,8 +1,7 @@
 {
   "name": "node-deployer",
   "version": "1.0.0",
-  "description": "Excute command in target server via ssh2 protocol.",
-  "main": "lib/index.js",
+  "description": "Deploy source to target server via ssh2 protocol.",
   "bin": {
     "nodep": "./bin/nodep.js"
   },
@@ -14,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wbkd/webpack-starter.git"
+    "url": "git+https://github.com/hexidedigital/nodep.git"
   },
   "keywords": [
     "nodejs",
