@@ -1,7 +1,8 @@
 {
-  "name": "node-deployer",
+  "name": "@hexide-digital/node-deployer",
   "version": "1.0.0",
   "description": "Deploy source to target server via ssh2 protocol.",
+  "main": "./bin/nodep.js",
   "bin": {
     "nodep": "./bin/nodep.js"
   },
@@ -39,5 +40,9 @@
     "ssh2": "^0.6.0",
     "glob": "^7.1.2",
     "ssh2-sftp-client": "^2.5.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/hexidedigital/nodep/issues"
+  },
+  "homepage": "https://github.com/hexidedigital/nodep#readme"
 }
