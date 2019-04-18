@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = (dep) => {
 
-  dep = require('../lib/recipes/deploy')(dep)
+  dep = require('@hexide-digital/node-deployer/lib/recipes/deploy')(dep)
 
   dep.servers(
     [
