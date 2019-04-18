@@ -28,13 +28,14 @@ var argv = require('minimist')(
 
 // show help
 if (argv.help) {
-  console.log('Usage: nodep [recipe] [arguments]')
+  console.log('Usage: nodep [task] [arguments]')
   console.log('       nodep init --stage=dev')
   console.log('')
   console.log('Options:')
   console.log('   -v, --version                   print current version')
   console.log('   -h, --help                      print this help message')
   console.log('   -s, --stage                     server stage')
+  console.log('   -c, --config                    config file')
   console.log('')
   console.log('Default recipes:')
   console.log('   init                           generate initial deployer directory')
