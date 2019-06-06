@@ -1,6 +1,6 @@
 {
   "name": "@hexide-digital/node-deployer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Deploy source to target server via ssh2 protocol.",
   "main": "./bin/nodep.js",
   "bin": {
