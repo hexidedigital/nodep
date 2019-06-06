@@ -18,10 +18,12 @@ var argv = require('minimist')(
       v: 'version',
       s: 'stage',
       c: 'config',
+      b: 'branch',
     },
     default: {
       stage: 'production',
-      config: 'config'
+      config: 'config',
+      branch: 'master'
     },
   }
 )
@@ -36,6 +38,7 @@ if (argv.help) {
   console.log('   -h, --help                      print this help message')
   console.log('   -s, --stage                     server stage')
   console.log('   -c, --config                    config file')
+  console.log('   -b, --branch                    git branch name')
   console.log('')
   console.log('Default recipes:')
   console.log('   init                           generate initial deployer directory')
@@ -85,6 +88,9 @@ if (argv.task === 'init') {
 
 
   let dep = new Dep(argv.stage, pwd, project_root);
+
+  dep.set('git_branch', argv.branch);
+
   dep = require(pwd + '/deploy/' + argv.config + '.js')(dep)
   dep.run(argv.task)
 
