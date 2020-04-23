@@ -24,22 +24,22 @@
   "author": "yaapis",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "babel-loader": "^8.0.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.1",
     "file-loader": "^2.0.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
+    "@babel/polyfill": "^7.8.7",
     "copy-dir": "^0.4.0",
-    "minimist": "^1.2.0",
+    "glob": "^7.1.6",
+    "minimist": "^1.2.5",
     "ssh2": "^0.6.0",
-    "glob": "^7.1.2",
-    "ssh2-sftp-client": "^2.5.0"
+    "ssh2-sftp-client": "^2.5.2"
   },
   "bugs": {
     "url": "https://github.com/hexidedigital/nodep/issues"
